@@ -10,7 +10,7 @@ git clone git@github.com:faustbrian/Noah.git
 
 ## Configuration
 
-If you wish to use a different notification driver then the default one you will need to open `~/noah/noah.sh` and change the following variables to your liking.
+If you wish to use a different notification driver then the default one you will need to open `~/Noah/noah.sh` and change the following variables to your liking.
 
 ```bash
 # --------------------------------------------------------------------------------------------------
@@ -48,11 +48,11 @@ If you wish to use **Slack** as your notification driver you will need to instal
 
 ## Usage
 
-Start **noah** by executing `forever start --pidFile ~/noah/noah.pid -c bash ~/noah/noah.sh` in your terminal.
+Start **noah** by executing `forever start --pidFile ~/Noah/noah.pid -c bash ~/Noah/noah.sh` in your terminal.
 
 This will guarantee that the script will run forever which means even if it crashes it will be automatically restarted.
 
-Run `ps ax | grep '/home/ark/noah/noah.sh' && ps ax | grep '~/noah/noah.sh'` and make sure there are only 2 processes related to the `noah.sh`.
+Run `ps ax | grep '/home/ark/Noah/noah.sh' && ps ax | grep '~/Noah/noah.sh'` and make sure there are only 2 processes related to the `noah.sh`.
 
 ## Security
 
