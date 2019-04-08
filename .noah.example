@@ -10,11 +10,17 @@
 # ---------------------------------------------------------------------------
 
 # -------------------------
+# Trigger Action
+# -------------------------
+
+trigger_action='rebuild' # rebuild or notify
+
+# -------------------------
 # Monitor
 # -------------------------
 
 monitor_lines=10                                       # number of lines to monitor...
-monitor_rebuild=120                                    # time to wait after a rebuild in seconds...
+monitor_rebuild=300                                    # time to wait after a rebuild in seconds...
 monitor_interval=1                                     # time to wait after a log check in seconds...
 
 # -------------------------
@@ -24,8 +30,8 @@ monitor_interval=1                                     # time to wait after a lo
 # example would be notification_drivers=(log slack pushover)
 
 notification_drivers=(log)                             # notification methods...
-                                                       # values: none, log, email, mailgun,
-                                                       # slack, nexmo, pushover, pushbullet
+                                                       # values: none, log, email, mailgun, slack, nexmo
+                                                       # pushover, pushbullet, discord, twilio_call, twilio_message
 
 # -------------------------
 # [Notifications] Log
@@ -39,6 +45,11 @@ notification_log=${noah_dir}/noah.log                  # log file...
 
 notification_email_to=''                               # e-mail recipient...
 notification_email_subject='noah'                      # e-mail subject...
+
+#-------------------------
+# [Notifcations] Discord
+#-------------------------
+notification_discord_webhook=''                        # discord incoming webhook...
 
 # -------------------------
 # [Notifications] Slack
@@ -84,6 +95,20 @@ notifications_mailgun_to=''                            # recipient e-mail...
 notifications_mailgun_subject='noah'                   # e-mail subject
 
 # -------------------------
+# [Notifications] Twilio
+#
+# twilio_call will call you if there's a problem with your node. Be aware that it can be
+# very annoying, specailly during the night. Consider using the Night Mode if it annoys you.
+#
+# -------------------------
+
+notifications_twilio_account_sid=''                   # twilio api client id...
+notifications_twilio_auth_token=''                    # twilio api token...
+notifications_twilio_from=''                          # caller phone number (In this convention: +15551234567)
+notifications_twilio_to=''                            # recipient phone number (In this convention: +15551234567)
+
+
+# -------------------------
 # Night Mode
 # -------------------------
 
@@ -106,24 +131,15 @@ relay_secret=''                                        # delegate secret...
 # -------------------------
 
 snapshot_mainnet=(
-    'http://ark.delegate-goose.biz/snapshot/current'
-    'http://arkdel.net/current'
     'http://s.arkmoon.com/current'
-    'http://s.arkx.io/current'
-    'https://dafty.net/snapshot1/current'
-    'https://dafty.net/snapshot2/current'
-    'https://dafty.net/snapshot3/current'
-    'https://dafty.net/snapshot4/current'
-    'https://dafty.net/snapshot5/current'
-    'https://dafty.net/snapshot6/current'
-    'https://s.arkno.de/current'
-    'https://snapshot.arkcoin.net/current'
+    'https://s.arknode.ninja/current'
     'https://snapshots.ark.io/current'
-    'https://www.arkdelegate.com/current'
+    'https://www.arkdelegate.com/snapy/current'
+    'https://snapshots.ark.land/current'
 )
 
 snapshot_devnet=(
     'https://dsnapshots.ark.io/current'
-    'https://dsnapshot.arkno.de/current'
+    'https://dsnapshot.arknode.ninja/current'
     'http://dexplorer.ark.land/snapshots/current'
 )
